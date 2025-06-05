@@ -1,0 +1,107 @@
+@startuml Casos de Uso
+
+skinparam actorStyle awesome
+skinparam packageStyle rectangle
+
+actor Médico
+actor Administrador
+actor Recepcionista
+actor Paciente
+
+rectangle "VidaPlus" {
+    usecase "Gerenciar Pacientes" as UC1
+    usecase "Agendar Consultas" as UC2
+    usecase "Gerenciar Prontuários" as UC3
+    usecase "Controlar Exames" as UC4
+    usecase "Gestão Financeira" as UC5
+    usecase "Gerar Relatórios" as UC6
+    usecase "Telemedicina" as UC7
+}
+
+Médico --> UC1
+Médico --> UC2
+Médico --> UC3
+Médico --> UC4
+Médico --> UC6
+Médico --> UC7
+
+Administrador --> UC1
+Administrador --> UC5
+Administrador --> UC6
+
+Recepcionista --> UC1
+Recepcionista --> UC2
+Recepcionista --> UC4
+
+Paciente --> UC2
+Paciente --> UC7
+
+@enduml
+
+@startuml Diagrama de Classes
+
+skinparam classAttributeIconSize 0
+
+class Paciente {
+    -id: Integer
+    -nome: String
+    -dataNascimento: Date
+    -telefone: String
+    -email: String
+    +cadastrar()
+    +editar()
+    +excluir()
+}
+
+class Consulta {
+    -id: Integer
+    -data: DateTime
+    -tipo: String
+    -status: String
+    +agendar()
+    +cancelar()
+    +confirmar()
+}
+
+class Prontuario {
+    -id: Integer
+    -data: Date
+    -observacoes: String
+    -diagnostico: String
+    +criar()
+    +editar()
+    +arquivar()
+}
+
+class Exame {
+    -id: Integer
+    -tipo: String
+    -data: Date
+    -resultado: String
+    +solicitar()
+    +registrarResultado()
+    +cancelar()
+}
+
+Paciente "1" -- "0..*" Consulta
+Paciente "1" -- "0..*" Prontuario
+Paciente "1" -- "0..*" Exame
+
+@enduml
+
+@startuml Diagrama de Sequência - Agendamento de Consulta
+
+actor Paciente
+participant "Sistema" as S
+participant "Médico" as M
+participant "Recepcionista" as R
+
+Paciente -> S: Solicita agendamento
+S -> R: Notifica recepcionista
+R -> M: Verifica disponibilidade
+M --> R: Confirma horário
+R -> S: Registra agendamento
+S --> Paciente: Confirma agendamento
+S -> Paciente: Envia confirmação por email
+
+@enduml 

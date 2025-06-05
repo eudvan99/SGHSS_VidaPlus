@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novo Cadastro - VidaPlus</title>
+    
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #059669;
+            --primary-dark: #065F46;
+            --primary-light: #D1FAE5;
+            --white: #FFFFFF;
+            --gray-100: #F9FAFB;
+            --gray-200: #F3F4F6;
+            --gray-300: #E5E7EB;
+            --gray-400: #D1D5DB;
+            --gray-500: #9CA3AF;
+            --gray-600: #6B7280;
+            --gray-700: #4B5563;
+            --gray-800: #1F2937;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --radius-sm: 6px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;git push -u origin main
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-md);
+            color: var(--gray-800);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            padding: var(--spacing-xl);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .logo {
+            width: 180px;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .subtitle {
+            color: var(--gray-600);
+            font-size: 1.1rem;
+        }
+
+        .form-group {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: var(--spacing-xs);
+            font-weight: 500;
+            color: var(--gray-700);
+        }
+
+        .input-group {
+            position: relative;
+        }
+
+        .input-group i {
+            position: absolute;
+            left: var(--spacing-md);
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray-500);
+            font-size: 1.2rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: var(--spacing-md) var(--spacing-md) var(--spacing-md) calc(var(--spacing-md) * 3);
+            border: 2px solid var(--gray-300);
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px var(--primary-light);
+        }
+
+        .row {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .col {
+            flex: 1;
+        }
+
+        .btn {
+            width: 100%;
+            padding: var(--spacing-md);
+            background: var(--primary-color);
+            color: var(--white);
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+        }
+
+        .form-check {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            margin: var(--spacing-lg) 0;
+        }
+
+        .form-check input {
+            width: 18px;
+            height: 18px;
+        }
+
+        .form-check label {
+            color: var(--gray-600);
+            font-size: 0.9rem;
+        }
+
+        .form-check a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .form-check a:hover {
+            text-decoration: underline;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: var(--spacing-lg);
+            color: var(--gray-600);
+        }
+
+        .login-link a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                padding: var(--spacing-lg);
+            }
+
+            .row {
+                flex-direction: column;
+                gap: var(--spacing-sm);
+            }
+
+            .title {
+                font-size: 1.5rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .form-control {
+                padding: var(--spacing-sm) var(--spacing-sm) var(--spacing-sm) calc(var(--spacing-md) * 2);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="header">
+                <img src="assets/logo.svg" alt="VidaPlus Logo" class="logo">
+                <h1 class="title">Criar Conta</h1>
+                <p class="subtitle">Preencha os dados abaixo para criar sua conta</p>
+            </div>
+
+            <form id="cadastroForm">
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="nome">Nome</label>
+                            <div class="input-group">
+                                <i class="fas fa-user"></i>
+                                <input type="text" id="nome" class="form-control" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="sobrenome">Sobrenome</label>
+                            <div class="input-group">
+                                <i class="fas fa-user"></i>
+                                <input type="text" id="sobrenome" class="form-control" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <div class="input-group">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="telefone">Telefone</label>
+                    <div class="input-group">
+                        <i class="fas fa-phone"></i>
+                        <input type="tel" id="telefone" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="senha">Senha</label>
+                            <div class="input-group">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="senha" class="form-control" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="confirmarSenha">Confirmar Senha</label>
+                            <div class="input-group">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="confirmarSenha" class="form-control" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="dataNascimento">Data de Nascimento</label>
+                    <div class="input-group">
+                        <i class="fas fa-calendar"></i>
+                        <input type="date" id="dataNascimento" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="plano">Plano</label>
+                    <div class="input-group">
+                        <i class="fas fa-tag"></i>
+                        <select id="plano" class="form-control" required>
+                            <option value="">Selecione um plano</option>
+                            <option value="basico">Plano Básico</option>
+                            <option value="premium">Plano Premium</option>
+                            <option value="empresarial">Plano Empresarial</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-check">
+                    <input type="checkbox" id="termos" required>
+                    <label for="termos">
+                        Li e aceito os <a href="#">Termos de Uso</a> e a <a href="#">Política de Privacidade</a>
+                    </label>
+                </div>
+
+                <button type="submit" class="btn">Criar Conta</button>
+
+                <div class="login-link">
+                    <p>Já tem uma conta? <a href="/login">Fazer Login</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('cadastroForm');
+            const telefone = document.getElementById('telefone');
+            const senha = document.getElementById('senha');
+            const confirmarSenha = document.getElementById('confirmarSenha');
+
+            // Máscara para telefone
+            telefone.addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length <= 11) {
+                    value = value.replace(/^(\d{2})(\d)/g, '($1) $2');
+                    value = value.replace(/(\d)(\d{4})$/, '$1-$2');
+                    e.target.value = value;
+                }
+            });
+
+            // Validação de senha
+            confirmarSenha.addEventListener('input', function() {
+                if (senha.value !== confirmarSenha.value) {
+                    confirmarSenha.setCustomValidity('As senhas não coincidem');
+                } else {
+                    confirmarSenha.setCustomValidity('');
+                }
+            });
+
+            // Envio do formulário
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                if (form.checkValidity()) {
+                    const submitBtn = form.querySelector('button[type="submit"]');
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = 'Processando...';
+
+                    // Simular envio
+                    setTimeout(() => {
+                        alert('Cadastro realizado com sucesso!');
+                        window.location.href = '/login';
+                    }, 1500);
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificar Email - VidaPlus</title>
+    
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="login-page">
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <img src="assets/logo.svg" alt="VidaPlus Logo" class="logo">
+                <h1>Verificar Email</h1>
+                <p>Digite o código de verificação enviado para seu email</p>
+            </div>
+            
+            <form class="login-form">
+                <div class="form-group">
+                    <label>Código de Verificação</label>
+                    <div class="verification-code">
+                        <input type="text" class="form-control" maxlength="1" pattern="[0-9]" inputmode="numeric">
+                        <input type="text" class="form-control" maxlength="1" pattern="[0-9]" inputmode="numeric">
+                        <input type="text" class="form-control" maxlength="1" pattern="[0-9]" inputmode="numeric">
+                        <input type="text" class="form-control" maxlength="1" pattern="[0-9]" inputmode="numeric">
+                        <input type="text" class="form-control" maxlength="1" pattern="[0-9]" inputmode="numeric">
+                        <input type="text" class="form-control" maxlength="1" pattern="[0-9]" inputmode="numeric">
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary w-100">
+                    <i class="fas fa-check"></i>
+                    Verificar
+                </button>
+                
+                <div class="text-center mt-3">
+                    <p>Não recebeu o código? <a href="#" class="text-primary resend-code">Reenviar</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script>
+        // Código de verificação
+        const inputs = document.querySelectorAll('.verification-code input');
+        
+        inputs.forEach((input, index) => {
+            input.addEventListener('keyup', (e) => {
+                if (e.key >= 0 && e.key <= 9) {
+                    if (index < inputs.length - 1) {
+                        inputs[index + 1].focus();
+                    }
+                } else if (e.key === 'Backspace') {
+                    if (index > 0) {
+                        inputs[index - 1].focus();
+                    }
+                }
+            });
+            
+            input.addEventListener('input', (e) => {
+                if (e.target.value.length === 1) {
+                    if (index < inputs.length - 1) {
+                        inputs[index + 1].focus();
+                    }
+                }
+            });
+        });
+        
+        // Reenviar código
+        let countdown = 60;
+        const resendButton = document.querySelector('.resend-code');
+        
+        resendButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            if (countdown === 60) {
+                resendButton.style.pointerEvents = 'none';
+                
+                const timer = setInterval(() => {
+                    countdown--;
+                    resendButton.textContent = `Reenviar (${countdown}s)`;
+                    
+                    if (countdown === 0) {
+                        clearInterval(timer);
+                        resendButton.textContent = 'Reenviar';
+                        resendButton.style.pointerEvents = 'auto';
+                        countdown = 60;
+                    }
+                }, 1000);
+            }
+        });
+    </script>
+</body>
+</html> 

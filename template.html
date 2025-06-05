@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VidaPlus - Sistema de Gestão de Saúde</title>
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-heartbeat"></i>
+                <span>VidaPlus</span>
+            </div>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <ul>
+                <li>
+                    <a href="index.html">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="pacientes.html">
+                        <i class="fas fa-users"></i>
+                        <span>Pacientes</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="consultas.html">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>Consultas</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="exames.html">
+                        <i class="fas fa-flask"></i>
+                        <span>Exames</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="telemedicina.html">
+                        <i class="fas fa-video"></i>
+                        <span>Telemedicina</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="prontuarios.html">
+                        <i class="fas fa-file-medical"></i>
+                        <span>Prontuários</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="financeiro.html">
+                        <i class="fas fa-dollar-sign"></i>
+                        <span>Financeiro</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="relatorios.html">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Relatórios</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <button class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <h1>Título da Página</h1>
+        </div>
+        
+        <div class="header-right">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Buscar...">
+            </div>
+            
+            <div class="header-actions">
+                <button class="btn-icon" title="Notificações">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge">3</span>
+                </button>
+                
+                <div class="user-menu">
+                    <div class="avatar-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <span>Dr. Silva</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="content-header">
+            <h1>Título da Página</h1>
+            <div class="header-actions">
+                <button class="btn btn-primary">
+                    <i class="fas fa-plus"></i>
+                    Nova Ação
+                </button>
+            </div>
+        </div>
+
+        <!-- Conteúdo específico da página aqui -->
+        
+    </main>
+
+    <!-- Scripts -->
+    <script>
+        // Toggle Sidebar
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.body.classList.toggle('sidebar-collapsed');
+        });
+
+        // Toggle User Menu
+        document.querySelector('.user-menu').addEventListener('click', function() {
+            this.classList.toggle('active');
+        });
+    </script>
+</body>
+</html> 

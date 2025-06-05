@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financeiro - VidaPlus</title>
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
+    
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/modules/header.css">
+    <link rel="stylesheet" href="css/modules/sidebar.css">
+    <link rel="stylesheet" href="css/modules/table.css">
+    <link rel="stylesheet" href="css/modules/financeiro.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <img src="assets/logo.svg" alt="VidaPlus Logo" class="logo">
+            <button class="btn-icon sidebar-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <ul>
+                <li>
+                    <a href="dashboard.html" class="nav-link">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="pacientes.html" class="nav-link">
+                        <i class="fas fa-users"></i>
+                        <span>Pacientes</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="consultas.html" class="nav-link">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>Consultas</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="prontuarios.html" class="nav-link">
+                        <i class="fas fa-file-medical"></i>
+                        <span>Prontuários</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="exames.html" class="nav-link">
+                        <i class="fas fa-vial"></i>
+                        <span>Exames</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="telemedicina.html" class="nav-link">
+                        <i class="fas fa-video"></i>
+                        <span>Telemedicina</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="financeiro.html" class="nav-link active">
+                        <i class="fas fa-dollar-sign"></i>
+                        <span>Financeiro</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="relatorios.html" class="nav-link">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Relatórios</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Conteúdo Principal -->
+    <main class="main-content">
+        <!-- Header -->
+        <header class="top-nav">
+            <div class="nav-left">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Pesquisar transações...">
+                </div>
+            </div>
+            
+            <div class="nav-right">
+                <button class="btn-icon">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge">3</span>
+                </button>
+                <button class="btn-icon">
+                    <i class="fas fa-envelope"></i>
+                    <span class="badge">5</span>
+                </button>
+                
+                <div class="user-menu">
+                    <button class="user-menu-toggle">
+                        <i class="fas fa-user-circle fa-2x"></i>
+                        <span>Dr. João Silva</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="user-dropdown">
+                        <a href="perfil.html">
+                            <i class="fas fa-user"></i>
+                            Meu Perfil
+                        </a>
+                        <a href="configuracoes.html">
+                            <i class="fas fa-cog"></i>
+                            Configurações
+                        </a>
+                        <hr>
+                        <a href="login.html" class="text-danger">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Sair
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Conteúdo da Página -->
+        <div class="content-wrapper">
+            <div class="content-header">
+                <h1>Financeiro</h1>
+                <p>Gerencie suas finanças</p>
+            </div>
+
+            <div class="content-body">
+                <div class="row">
+                    <div class="col-8">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h2>Transações</h2>
+                                    <button class="btn btn-primary">
+                                        <i class="fas fa-plus"></i>
+                                        Nova Transação
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="filter-section">
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <div class="filter-group">
+                                                <label class="filter-label">Tipo</label>
+                                                <select class="filter-control">
+                                                    <option value="">Todos</option>
+                                                    <option value="receita">Receitas</option>
+                                                    <option value="despesa">Despesas</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="filter-group">
+                                                <label class="filter-label">Categoria</label>
+                                                <select class="filter-control">
+                                                    <option value="">Todas</option>
+                                                    <option value="consultas">Consultas</option>
+                                                    <option value="exames">Exames</option>
+                                                    <option value="aluguel">Aluguel</option>
+                                                    <option value="outros">Outros</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="filter-group">
+                                                <label class="filter-label">Status</label>
+                                                <select class="filter-control">
+                                                    <option value="">Todos</option>
+                                                    <option value="pago">Pago</option>
+                                                    <option value="pendente">Pendente</option>
+                                                    <option value="atrasado">Atrasado</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-end mt-3">
+                                        <button class="btn btn-primary">
+                                            <i class="fas fa-filter"></i>
+                                            Aplicar Filtros
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="table-responsive mt-4">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Data</th>
+                                                <th>Descrição</th>
+                                                <th>Categoria</th>
+                                                <th>Valor</th>
+                                                <th>Status</th>
+                                                <th>Ações</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>15/03/2024</td>
+                                                <td>Consulta - Maria Silva</td>
+                                                <td>Consultas</td>
+                                                <td class="text-success">R$ 150,00</td>
+                                                <td>
+                                                    <span class="badge bg-success">Pago</span>
+                                                </td>
+                                                <td>
+                                                    <div class="btn-group">
+                                                        <button class="btn btn-sm btn-outline">
+                                                            <i class="fas fa-eye"></i>
+                                                            Visualizar
+                                                        </button>
+                                                        <button class="btn btn-sm btn-outline">
+                                                            <i class="fas fa-edit"></i>
+                                                            Editar
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>14/03/2024</td>
+                                                <td>Exame - João Santos</td>
+                                                <td>Exames</td>
+                                                <td class="text-success">R$ 200,00</td>
+                                                <td>
+                                                    <span class="badge bg-warning">Pendente</span>
+                                                </td>
+                                                <td>
+                                                    <div class="btn-group">
+                                                        <button class="btn btn-sm btn-outline">
+                                                            <i class="fas fa-eye"></i>
+                                                            Visualizar
+                                                        </button>
+                                                        <button class="btn btn-sm btn-outline">
+                                                            <i class="fas fa-edit"></i>
+                                                            Editar
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>13/03/2024</td>
+                                                <td>Aluguel</td>
+                                                <td>Despesas</td>
+                                                <td class="text-danger">-R$ 3.000,00</td>
+                                                <td>
+                                                    <span class="badge bg-success">Pago</span>
+                                                </td>
+                                                <td>
+                                                    <div class="btn-group">
+                                                        <button class="btn btn-sm btn-outline">
+                                                            <i class="fas fa-eye"></i>
+                                                            Visualizar
+                                                        </button>
+                                                        <button class="btn btn-sm btn-outline">
+                                                            <i class="fas fa-edit"></i>
+                                                            Editar
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>12/03/2024</td>
+                                                <td>Consulta - Ana Oliveira</td>
+                                                <td>Consultas</td>
+                                                <td class="text-success">R$ 150,00</td>
+                                                <td>
+                                                    <span class="badge bg-success">Pago</span>
+                                                </td>
+                                                <td>
+                                                    <div class="btn-group">
+                                                        <button class="btn btn-sm btn-outline">
+                                                            <i class="fas fa-eye"></i>
+                                                            Visualizar
+                                                        </button>
+                                                        <button class="btn btn-sm btn-outline">
+                                                            <i class="fas fa-edit"></i>
+                                                            Editar
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>11/03/2024</td>
+                                                <td>Material de Escritório</td>
+                                                <td>Despesas</td>
+                                                <td class="text-danger">-R$ 450,00</td>
+                                                <td>
+                                                    <span class="badge bg-success">Pago</span>
+                                                </td>
+                                                <td>
+                                                    <div class="btn-group">
+                                                        <button class="btn btn-sm btn-outline">
+                                                            <i class="fas fa-eye"></i>
+                                                            Visualizar
+                                                        </button>
+                                                        <button class="btn btn-sm btn-outline">
+                                                            <i class="fas fa-edit"></i>
+                                                            Editar
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>10/03/2024</td>
+                                                <td>Exame - Pedro Costa</td>
+                                                <td>Exames</td>
+                                                <td class="text-success">R$ 350,00</td>
+                                                <td>
+                                                    <span class="badge bg-danger">Atrasado</span>
+                                                </td>
+                                                <td>
+                                                    <div class="btn-group">
+                                                        <button class="btn btn-sm btn-outline">
+                                                            <i class="fas fa-eye"></i>
+                                                            Visualizar
+                                                        </button>
+                                                        <button class="btn btn-sm btn-outline">
+                                                            <i class="fas fa-edit"></i>
+                                                            Editar
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>09/03/2024</td>
+                                                <td>Internet</td>
+                                                <td>Despesas</td>
+                                                <td class="text-danger">-R$ 199,90</td>
+                                                <td>
+                                                    <span class="badge bg-success">Pago</span>
+                                                </td>
+                                                <td>
+                                                    <div class="btn-group">
+                                                        <button class="btn btn-sm btn-outline">
+                                                            <i class="fas fa-eye"></i>
+                                                            Visualizar
+                                                        </button>
+                                                        <button class="btn btn-sm btn-outline">
+                                                            <i class="fas fa-edit"></i>
+                                                            Editar
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>08/03/2024</td>
+                                                <td>Consulta - Juliana Mendes</td>
+                                                <td>Consultas</td>
+                                                <td class="text-success">R$ 150,00</td>
+                                                <td>
+                                                    <span class="badge bg-warning">Pendente</span>
+                                                </td>
+                                                <td>
+                                                    <div class="btn-group">
+                                                        <button class="btn btn-sm btn-outline">
+                                                            <i class="fas fa-eye"></i>
+                                                            Visualizar
+                                                        </button>
+                                                        <button class="btn btn-sm btn-outline">
+                                                            <i class="fas fa-edit"></i>
+                                                            Editar
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h2>Resumo Financeiro</h2>
+                            </div>
+                            <div class="card-body">
+                                <div class="summary-item">
+                                    <div class="summary-label">Receitas do Mês</div>
+                                    <div class="summary-value text-success">R$ 15.000,00</div>
+                                </div>
+                                <div class="summary-item">
+                                    <div class="summary-label">Despesas do Mês</div>
+                                    <div class="summary-value text-danger">R$ 8.000,00</div>
+                                </div>
+                                <div class="summary-item">
+                                    <div class="summary-label">Saldo</div>
+                                    <div class="summary-value text-success">R$ 7.000,00</div>
+                                </div>
+                                <hr>
+                                <div class="summary-item">
+                                    <div class="summary-label">Pendentes</div>
+                                    <div class="summary-value text-warning">R$ 2.500,00</div>
+                                </div>
+                                <div class="summary-item">
+                                    <div class="summary-label">Vencidos</div>
+                                    <div class="summary-value text-danger">R$ 1.200,00</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+</body>
+</html> 
